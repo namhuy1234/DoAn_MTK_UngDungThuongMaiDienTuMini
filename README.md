@@ -8,7 +8,7 @@ Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js*
 ## Thành viên (Nhóm 16 – CTK47B)
 
 | MSSV | Họ tên | Vai trò |
-
+|---|---|---|
 | 2312632 | Đặng Nam Huy | Nhóm trưởng, quản lý GitHub |
 | 2314487 | Phanthamala Somsavath | Thành viên |
 
@@ -24,7 +24,7 @@ Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js*
 ## Mẫu thiết kế áp dụng
 
 | Mẫu | Vị trí | Mục đích |
-
+|---|---|---|
 | Strategy | `IPaymentStrategy`, `PaymentContext` | Mỗi phương thức thanh toán là một lớp riêng |
 | Simple Factory | `PaymentFactory` | Chọn đúng strategy theo phương thức khách chọn |
 | Observer | `EventPublisher`, `OrderEventHandler` | Đặt hàng xong tự gửi email, ghi nhận tồn kho |
@@ -45,13 +45,12 @@ Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js*
 3. Tắt chương trình: nhấp đúp **`DUNG_CHUONG_TRINH.bat`**.
 
 | Nội dung | Địa chỉ |
-
+|---|---|
 | Web | http://localhost:3000 |
 | Swagger (thử API) | http://localhost:8080/swagger-ui.html |
 | H2 Console | http://localhost:8080/h2-console (JDBC URL: `jdbc:h2:mem:miniecommerce`, User: `sa`, mật khẩu để trống) |
 
 **Tài khoản demo:** `namhuy` / `namhuy123456`
-
 
 ## Cấu trúc thư mục
 ├── mini-ecommerce-java/ Back-end Spring Boot
