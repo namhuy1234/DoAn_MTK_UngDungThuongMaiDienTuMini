@@ -7,6 +7,7 @@ Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js*
 
 ## Thành viên (Nhóm 16 – CTK47B)
 | 2312632 | Đặng Nam Huy | Nhóm trưởng, quản lý GitHub |
+
 | 2314487 | Phanthamala Somsavath | Thành viên |
 
 ## Chức năng
