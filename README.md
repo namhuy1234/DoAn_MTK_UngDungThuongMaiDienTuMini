@@ -6,6 +6,7 @@ Giảng viên: ThS. Đoàn Minh Khuê.
 Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js**, áp dụng 5 mẫu thiết kế: **Strategy, Observer, Simple Factory, Repository, Unit of Work**.
 
 ## Thành viên (Nhóm 16 – CTK47B)
+| MSSV | Họ tên | Vai trò |
 | 2312632 | Đặng Nam Huy | Nhóm trưởng, quản lý GitHub |
 | 2314487 | Phanthamala Somsavath | Thành viên |
 
