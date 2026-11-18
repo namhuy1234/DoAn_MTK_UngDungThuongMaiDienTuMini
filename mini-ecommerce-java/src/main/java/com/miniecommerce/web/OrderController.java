@@ -6,7 +6,6 @@ import com.miniecommerce.application.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -42,7 +41,9 @@ public class OrderController {
             @RequestHeader(value = "X-Idempotency-Key", required = false) String idempotencyKey,
             @RequestBody CreateOrderDto dto) {
         OrderDto created = orderService.createOrderAsync(dto, idempotencyKey);
-        return ResponseEntity.created(URI.create("/api/orders/" + created.id())).body(created);
+        return ResponseEntity.status(201)
+                .header("Location", "/api/orders/" + created.id())
+                .body(created);
     }
 
     @PutMapping("/{id}/cancel")

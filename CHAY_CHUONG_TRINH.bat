@@ -31,12 +31,15 @@ if not errorlevel 1 (
     goto FRONTEND
 )
 if exist "%JAR%" goto RUN_JAR
-where mvn >nul 2>nul
-if errorlevel 1 goto NO_JAR
-echo [1/4] Chua co file jar, dang build bang Maven - lan dau mat vai phut...
+echo [1/4] Chua co file jar, dang build back-end bang Maven Wrapper - lan dau can mang, mat vai phut...
 pushd "%BE%"
-call mvn -q -DskipTests package
+if exist "%BE%\mvnw.cmd" (
+    call "%BE%\mvnw.cmd" -q -DskipTests package
+) else (
+    call mvn -q -DskipTests package
+)
 popd
+if exist "%BE%	argetpp" rmdir /s /q "%BE%	argetpp"
 if not exist "%JAR%" goto NO_JAR
 :RUN_JAR
 echo [1/4] Dang bat back-end Spring Boot o cua so rieng...
@@ -64,6 +67,8 @@ REM ---------- 3. Front-end (cong 3000) ----------
 if exist "%FE%\node_modules\.bin\next.cmd" goto FE_READY
 echo [2/4] Chua cai thu vien front-end, dang chay npm install - lan dau mat vai phut...
 pushd "%FE%"
+REM Xoa ban build do dang (neu co) de tranh loi ENOENT pages-manifest.json
+if exist ".next" rmdir /s /q ".next"
 call npm install
 popd
 if not exist "%FE%\node_modules\.bin\next.cmd" goto NPM_FAIL
@@ -77,6 +82,8 @@ REM Ban production: build 1 lan (chi build lai khi chua co .next\BUILD_ID), sau 
 if exist "%FE%\.next\BUILD_ID" goto FE_START
 echo [2/4] Build front-end lan dau - khoang 1 phut, cac lan sau bo qua...
 pushd "%FE%"
+REM Xoa ban build do dang (neu co) de tranh loi ENOENT pages-manifest.json
+if exist ".next" rmdir /s /q ".next"
 call npm run build
 popd
 if not exist "%FE%\.next\BUILD_ID" goto FE_FAIL
@@ -121,8 +128,8 @@ goto END_FAIL
 echo [LOI] Khong tim thay Node.js. Hay cai Node.js 18 tro len tu https://nodejs.org roi chay lai.
 goto END_FAIL
 :NO_JAR
-echo [LOI] Khong co file %JAR% va may chua cai Maven de build.
-echo       Cai Maven roi chay: cd mini-ecommerce-java  va  mvn -DskipTests package
+echo [LOI] Build back-end khong thanh cong, chua co file %JAR%.
+echo       Kiem tra: may da cai JDK 17 tro len (lenh java -version) va co ket noi mang o lan chay dau.
 goto END_FAIL
 :NPM_FAIL
 echo [LOI] npm install khong thanh cong. Kiem tra ket noi mang roi chay lai.

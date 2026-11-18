@@ -6,12 +6,10 @@ import com.miniecommerce.application.payment.dto.PaymentResult;
 import com.miniecommerce.application.payment.strategy.PaymentContext;
 import com.miniecommerce.application.service.OrderService;
 import com.miniecommerce.domain.enums.PaymentMethod;
-import com.miniecommerce.domain.entity.Order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -68,6 +66,8 @@ public class PaymentController {
         // Lưu kết quả thanh toán vào DB và cập nhật trạng thái đơn hàng
         orderService.recordPayment(orderId, method, amount, result);
 
-        return ResponseEntity.created(URI.create("/api/payments/" + orderId)).body(result);
+        return ResponseEntity.status(201)
+                .header("Location", "/api/payments/" + orderId)
+                .body(result);
     }
 }

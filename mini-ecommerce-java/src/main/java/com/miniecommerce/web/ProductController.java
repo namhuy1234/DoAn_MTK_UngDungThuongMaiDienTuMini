@@ -4,14 +4,10 @@ import com.miniecommerce.application.dto.CreateProductDto;
 import com.miniecommerce.application.dto.PageResult;
 import com.miniecommerce.application.dto.ProductDto;
 import com.miniecommerce.application.service.ProductService;
-import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.net.URI;
-import java.util.List;
 
 /**
  * API quản lý sản phẩm (RESTful).
@@ -57,7 +53,9 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductDto> create(@RequestBody CreateProductDto dto) {
         ProductDto created = productService.createProduct(dto);
-        return ResponseEntity.created(URI.create("/api/products/" + created.id())).body(created);
+        return ResponseEntity.status(201)
+                .header("Location", "/api/products/" + created.id())
+                .body(created);
     }
 
     /**
