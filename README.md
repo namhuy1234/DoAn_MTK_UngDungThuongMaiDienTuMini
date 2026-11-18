@@ -53,6 +53,7 @@ Web bán hàng mini gồm back-end **Java Spring Boot** và front-end **Next.js*
 **Tài khoản demo:** `namhuy` / `namhuy123456`
 
 ## Cấu trúc thư mục
+
 ├── mini-ecommerce-java/ Back-end Spring Boot
 ├── frontend/ Front-end Next.js
 ├── CHAY_CHUONG_TRINH.bat Chạy toàn bộ chương trình
