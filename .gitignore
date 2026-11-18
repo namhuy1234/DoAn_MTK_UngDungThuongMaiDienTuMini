@@ -33,3 +33,6 @@ server.out
 # OS
 Thumbs.db
 .DS_Store
+
+# TypeScript build cache
+*.tsbuildinfo
